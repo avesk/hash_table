@@ -113,13 +113,13 @@ public class HashTable{
 		int i = hash(s);
 		int j = 0;
 		
-		while(T[i][1] != null){
+		while(T[i][1] != null && T[i][0]!="x"){
 			
 			//Quad probe
 			i = i + j*j;
 			j++;
 
-			// //Lin Probe:
+			//Lin Probe:
 			// i+=1;
 
 			if (i >= TableSize)
@@ -144,7 +144,7 @@ public class HashTable{
 		int i = hash(s);
 		int j = 1;
 		
-		while(T[i][1] != null){
+		while(T[i][1] != null && T[i][0]!="x"){
 			
 			//Quad probe
 			i+=j*j % TableSize;
@@ -180,12 +180,12 @@ public class HashTable{
 		while (true){
 			String element = T[i][1];
 			//If the slot is empty, the provided string was not found.
-			if (element == null )
+			if (element == null || T[i][0]=="x" )
 				return -1;
 			//If the slot contains the desired string, return its index.
 			//Note that to test whether strings are equal in Java,
 			//the '==' operator is not correct.
-			if (s.equals(element) )
+			if (s.equals(element) && T[i][0]!="x")
 				return i;
 			//If the string was not at this index, continue looking.
 			i++;
