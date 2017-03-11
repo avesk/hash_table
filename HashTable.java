@@ -111,12 +111,13 @@ public class HashTable{
 
 		//get hash:
 		int i = hash(s);
-		int j = 1;
+		int j = 0;
 		
 		while(T[i][1] != null){
 			
 			//Quad probe
-			i = (i + j*j++) % TableSize;
+			i = i + j*j;
+			j++;
 
 			// //Lin Probe:
 			// i+=1;
